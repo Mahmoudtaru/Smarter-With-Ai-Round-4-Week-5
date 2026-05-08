@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smarter With AI - المحاضرة الخامسة (الإخراج السينمائي والفيديوهات)</title>
+    
+    <!-- Google Fonts: Cairo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Cairo', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#2A1B54',
+                            teal: '#20857D',
+                            green: '#7BBA4E',
+                            light: '#F4F9F8',
+                            darkbg: '#050a09',
+                            darkcard: '#0c1715'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #20857D; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #7BBA4E; }
+        
+        .gradient-text {
+            background: linear-gradient(to left, #2A1B54, #20857D, #7BBA4E);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .dark .gradient-text {
+            background: linear-gradient(to left, #7BBA4E, #20857D, #60A5FA);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-brand-light text-gray-800 dark:bg-brand-darkbg dark:text-gray-100 transition-colors duration-300 antialiased selection:bg-brand-green selection:text-white pb-12">
+
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-40 backdrop-blur-md bg-white/80 dark:bg-brand-darkbg/90 border-b-2 border-gray-200 dark:border-brand-teal/50 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo Area -->
+                <div class="flex items-center gap-2">
+                    <img src="https://i.postimg.cc/j512mZ0r/lwjw-image-hosting.jpg" alt="Smarter With AI Logo" class="w-12 h-12 rounded-xl object-contain shadow-sm bg-white border-2 border-brand-teal/30 dark:border-brand-teal">
+                    <span class="font-bold text-xl tracking-tight text-brand-dark dark:text-white">Smarter With <span class="text-brand-green">AI</span></span>
+                </div>
+                <!-- Theme Toggle -->
+                <button id="themeToggle" class="p-2 rounded-full hover:bg-brand-teal/10 dark:hover:bg-brand-teal/20 transition">
+                    <i id="themeIcon" class="fa-solid fa-moon text-xl text-brand-teal dark:text-brand-green"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header / Hero -->
+    <header class="max-w-4xl mx-auto mt-10 px-4 text-center">
+        <div class="inline-block px-4 py-1 rounded-full bg-brand-teal/10 text-brand-teal dark:bg-brand-teal/20 dark:text-brand-teal text-sm font-semibold mb-4">
+            المحاضرة الخامسة - الدفعة الرابعة
+        </div>
+        <h1 class="text-3xl md:text-5xl font-extrabold mb-4 gradient-text">تحديثات الـ AI السريعة وأسرار الإخراج السينمائي</h1>
+        <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-6 font-bold">
+            دليلك الشامل لإنتاج الفيديوهات وتحديثات أدوات الذكاء الاصطناعي 🎬🚀
+        </p>
+        
+        <!-- نبذة -->
+        <div class="bg-white/60 dark:bg-black/30 backdrop-blur-sm p-5 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm text-sm md:text-base text-gray-700 dark:text-gray-200 leading-relaxed text-right">
+            <strong>أهلاً وسهلاً بيكم في الأسبوع الخامس من دبلومة Smarter With AI.</strong> المحاضرة دي مش مجرد شرح لأدوات جديدة، دي نقلة نوعية في عقليتك وطريقة إدارتك لوقتك! هنتعلم إزاي نستخدم تحديثات جبارة في NotebookLM و Gemini، وهندخل في عمق "الإخراج السينمائي" بالفيديوهات باستخدام موقع Flow وتريكات الـ First & Last Frame السحرية، وتفاصيل النطق والصوت. جهز كوباية الشاي أو القهوة، وركز معايا عشان نضاعف إنتاجيتك! 🔥
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 py-12 space-y-12">
+
+        <!-- 1. منطقة التعلم (Learning Zone) -->
+        <section id="learning-zone" class="scroll-mt-24 bg-white dark:bg-brand-darkcard border-2 border-gray-200 dark:border-brand-teal/60 rounded-3xl p-6 md:p-8 shadow-md">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="p-3 bg-brand-teal/10 dark:bg-brand-teal/20 text-brand-teal dark:text-brand-green rounded-lg border border-brand-teal/30">
+                    <i class="fa-solid fa-book-open text-xl"></i>
+                </div>
+                <h2 class="text-2xl font-bold border-b-2 border-brand-green pb-2 inline-block dark:text-white">دليل المحاضرة الخامسة</h2>
+            </div>
+
+            <!-- المحتوى المقروء الضخم -->
+            <div class="prose prose-lg dark:prose-invert max-w-none mt-4 text-gray-800 dark:text-gray-200">
+                
+                <h3 class="text-xl font-bold text-brand-dark dark:text-white mt-8 mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-1 text-brand-green text-sm"></i> الباب الأول: العقلية الصح.. الـ AI مهارة مش رفاهية 🧠💡
+                </h3>
+                <p>زمان كان مصطلح "الأمي" بيتقال على اللي مش بيعرف يقرأ ويكتب، بس دكتور محمود فاجئنا بحقيقة مرعبة في بداية المحاضرة.. في نهاية 2026، الأمي هو اللي مش بيعرف يستخدم الذكاء الاصطناعي!</p>
+                <p>إحنا بقالنا شهر في الدبلومة، والأيام بتجري بسرعة. دكتور محمود لاحظ من استمارات التقييم إن في شباب لسه مبدأوش، أو حاسين بضغط التزاماتهم (شغل، دراسة، بيت) ومش لاقيين وقت يفصلوا فيه عشان يذاكروا الدبلومة. هنا لازم نظبط البوصلة:</p>
+                <p class="font-bold text-brand-teal dark:text-brand-green text-lg text-center my-4">
+                    الدبلومة دي مش "عبء جديد" محتاج تفضيله وقت من يومك! الدبلومة دي بتديك "مهارات" عشان تخلصك من ضغط التزاماتك الحالية.
+                </p>
+                <p>يعني لو أنت طالب ماجستير، استخدم اللي بتتعلمه في البحث عن رسالتك. لو أنت شغال في الماركتنج، استخدمه عشان تحلل منافسينك. لو أنت طبيب أسنان، خليه يساعدك تتابع أحدث الحالات في مجالك.</p>
+                
+                <h4 class="font-bold text-brand-teal dark:text-brand-green mt-6">المستقبل رايح لفين؟ (عصر الـ Agents)</h4>
+                <p>الموضوع مابقاش مجرد شات بتسأله ويرد عليك، إحنا داخلين على عصر الـ <strong>(Agents)</strong>. يعني مساعد ذكي بياخد "أكشن" بالنيابة عنك! جيميناي (Gemini) مثلاً بقى مدمج جوه جوجل كروم والـ Workspace، و ChatGPT بيجهز Agents تنفذ مهام كاملة. فاللي مش هيلحق القطر ده دلوقتي، هيتعب جداً قدام.</p>
+                <p>عشان كده، بلاش تحس إنك متأخر. ابدأ من المحاضرة اللي تلمس احتياجك الحالي، وطبق في مساحة شغلك.. الـ AI جاي يخفف عنك، مش يضغطك!</p>
+
+                <h3 class="text-xl font-bold text-brand-dark dark:text-white mt-10 mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-2 text-brand-green text-sm"></i> الباب الثاني: تحديثات سريعة هتضاعف إنتاجيتك 🚀⚡
+                </h3>
+                <p>بما إننا بنتكلم عن توفير الوقت، دكتور محمود شارك معانا شوية تحديثات "في الجون" نزلت في الأدوات اللي بنستخدمها كل يوم، وهتفرق معاك جداً في سرعة إنجازك.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mt-6">
+                    <!-- تحديث NotebookLM -->
+                    <div class="bg-gray-50 dark:bg-[#070e0c] border-2 border-gray-200 dark:border-brand-teal/30 border-t-4 border-t-purple-500 rounded-2xl p-5 shadow-sm transition-all hover:shadow-md hover:-translate-y-1 flex flex-col h-full">
+                        <h4 class="font-bold text-brand-dark dark:text-white mb-3 flex items-center gap-2">
+                            <i class="fa-solid fa-book-open-reader text-purple-500 text-lg"></i> 1️⃣ تحديثات NotebookLM
+                        </h4>
+                        <ul class="text-sm list-disc list-inside space-y-3 text-gray-700 dark:text-gray-200 flex-1">
+                            <li><strong>ميزة الـ Auto-label (التصنيف التلقائي):</strong> لو أنت رافع 300 مصدر، زمان كنت بتوه فيهم. دلوقتي ظهرت أيقونة بتصنفلك المصادر في "فولدرات/ليبلز". <em>مثال: لو بتعمل كويز عن "الوحدة الأولى" بس، هتحدد الليبل بتاعها، والموقع هيتجاهل باقي المصادر!</em></li>
+                            <li><strong>تخصيص الخريطة الذهنية (Custom Mind Map):</strong> في الاستوديو، تقدر تدوس على سهم الخريطة الذهنية وتقوله: "أنا عايز الخريطة تركز على الموضوع الفلاني أو المصدر الفلاني بس".</li>
+                        </ul>
+                    </div>
+
+                    <!-- تحديث Gemini -->
+                    <div class="bg-gray-50 dark:bg-[#070e0c] border-2 border-gray-200 dark:border-brand-teal/30 border-t-4 border-t-blue-500 rounded-2xl p-5 shadow-sm transition-all hover:shadow-md hover:-translate-y-1 flex flex-col h-full">
+                        <h4 class="font-bold text-brand-dark dark:text-white mb-3 flex items-center gap-2">
+                            <i class="fa-brands fa-google text-blue-500 text-lg"></i> 2️⃣ تحديثات Gemini (التصدير)
+                        </h4>
+                        <p class="text-sm text-gray-700 dark:text-gray-200 mb-2">جيميناي عمل "تريكة صايعة" هتوفر عليك خطوة النسخ واللصق. الآن تقدر تعمل <strong>Export (تصدير)</strong> لأي إجابة بيطلعها وتحولها مباشرة لـ:</p>
+                        <ul class="text-sm list-disc list-inside space-y-2 text-gray-700 dark:text-gray-200 flex-1">
+                            <li>ملف <strong>Google Docs</strong> (للنصوص).</li>
+                            <li>ملف <strong>Google Sheets</strong> (لو طلبت منه جدول أو بيانات).</li>
+                            <li>ملف <strong>PDF</strong> جاهز بضغطة زرار!</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 dark:bg-[#070e0c] p-5 rounded-2xl border-2 border-brand-teal/30 border-r-4 border-r-yellow-500 mt-6 shadow-sm transition-all hover:shadow-md hover:-translate-y-1">
+                    <h4 class="font-bold text-brand-dark dark:text-white mb-2"><i class="fa-solid fa-person-chalkboard text-yellow-500 text-lg ml-2"></i> 3️⃣ سحر Google Slides القادم!</h4>
+                    <p class="text-sm text-gray-700 dark:text-gray-200 leading-relaxed m-0">دي تسريبة وتحديث هينزل قريب لكل الناس.. جوجل سلايدز هيدمج جيميناي جواه بشكل كامل. هتبقى فاتح ملف بريزنتيشن فاضي، تقوله: "اعملي بريزنتيشن كاملة"، وتعمل منشن (Mention) لملف PDF يشرح منه، وتختار ملف سلايدز قديم ياخد منه "نفس الستايل والديزاين". هيسألك كام سؤال عن الجمهور المستهدف، وتدوس Generate.. يطلعلك بريزنتيشن كاملة متناسقة تقدر تعدل عليها فوراً!</p>
+                </div>
+
+                <p class="mt-8 font-bold text-brand-teal dark:text-brand-green text-center italic">"كده إحنا ظبطنا العقلية وعرفنا أحدث التريكات في أدوات البحث والتنظيم. جهز كوباية الشاي التانية ويلا بينا ندوس في الجد، لأن اللي جاي ده هيوفر عليك ساعات من الشغل، وهينقلك لعالم تاني خالص! 🚀"</p>
+
+                <h3 class="text-xl font-bold text-brand-dark dark:text-white mt-10 mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-images text-brand-green text-sm"></i> الباب الثالث: تصميم الكاروسيل (Carousels) في دقايق بـ ChatGPT 📸⏱️
+                </h3>
+                <p>عمرك تخيلت إن تصميم بوست "كاروسيل" للإنستجرام (اللي هو كذا صورة بتسحبهم ورا بعض في بوست واحد) ممكن يخلص في ربع ساعة بدل ساعتين أو تلاتة؟</p>
+                <p>دكتور محمود شارك معانا تجربة عملية حقيقية عملها لصفحة الدبلومة.. كان محتاج يعمل كاروسيل من 6 سلايدات (صور مربعة 1:1). بدل ما يفتح برامج التصميم ويبدأ من الصفر، راح للوحش <strong>ChatGPT</strong>!</p>
+                
+                <div class="bg-white dark:bg-[#0a1412] p-5 rounded-2xl border-2 border-gray-100 dark:border-gray-800 shadow-sm mt-4">
+                    <h4 class="font-bold text-brand-teal dark:text-brand-green mb-3">🎯 التريكة في التنفيذ:</h4>
+                    <ul class="list-disc list-inside space-y-3 text-sm text-gray-700 dark:text-gray-200">
+                        <li><strong>الريفرنس (المرجع):</strong> إدى لـ ChatGPT محتوى السلايدات، ورفعله صورة لتصميم قديم عاجبه عشان يقوله: "أنا عايز نفس الستايل والألوان دي".</li>
+                        <li><strong>الطلب المجمع:</strong> قاله: "أنا عايزك تطلعلي الـ 6 صور مرة واحدة!".</li>
+                        <li><strong>التعديل والمراجعة:</strong> النتيجة طلعت لذيذة جداً، بس الـ AI بيسيب التاتش بتاعه (رقم غلط، أو سهم زيادة). دكتور محمود بدأ يعلق على كل صورة ويقوله: "شيل السهم ده، عدل الرقم ده".</li>
+                        <li><strong>اللمسة الأخيرة:</strong> بعد ما اتظبطت الصور، زميله الجرافيك ديزاينر مسح اللوجوهات الوهمية وحط اللوجو الحقيقي. <strong>النتيجة؟</strong> شغل 3 ساعات خلص في نص ساعة بالكتير!</li>
+                    </ul>
+                </div>
+
+                <h3 class="text-xl font-bold text-brand-dark dark:text-white mt-10 mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-video text-brand-green text-sm"></i> الباب الرابع: الدخول الشامل لعالم الفيديوهات (الوحش الحقيقي) 🎬🎥
+                </h3>
+                <p>بعد ما فرمنا الصور، جه الوقت نلعب في الفيديوهات. هنستخدم هنا منصة <strong>Flow</strong> الجبارة من جوجل. لما بتفتح Flow وتعمل (New Project)، بتختار فيديو، وبنلاقي نفسنا قدام نوعين أساسيين:</p>
+                
+                <div class="grid md:grid-cols-2 gap-4 mt-4 text-sm">
+                    <div class="bg-gray-50 dark:bg-[#070e0c] p-4 rounded-xl border-2 border-gray-200 dark:border-brand-teal/30">
+                        <strong class="text-brand-teal dark:text-brand-green block mb-2"><i class="fa-solid fa-keyboard"></i> من نص لفيديو (Text-to-Video)</strong>
+                        بتكتب وصف من خيالك (مثلاً: شاب واقف على مركب في النيل بيصطاد سمك وبيقول مرحب بيكم في مصر). والـ AI بيخلق الفيديو من الصفر.
+                    </div>
+                    <div class="bg-gray-50 dark:bg-[#070e0c] p-4 rounded-xl border-2 border-gray-200 dark:border-brand-teal/30">
+                        <strong class="text-brand-teal dark:text-brand-green block mb-2"><i class="fa-solid fa-image"></i> من صورة لفيديو (Image-to-Video)</strong>
+                        معاك صورة ثابته وعايز تحركها (مثلاً: معاك لوجو الشركة وعايز تعمله أنيميشن وحركة لذيذة).
+                    </div>
+                </div>
+
+                <h4 class="font-bold text-brand-teal dark:text-brand-green mt-6">⏱️ فخ الـ 8 ثواني وتفاصيل البرومبت!</h4>
+                <p>النماذج الحالية بتعمل فيديوهات مدتها من 5 لـ 15 ثانية كحد أقصى. عشان كده، لو إديت للنموذج وصف "عام"، هو هيفترض باقي التفاصيل من دماغه! (هيفترض لبس الشاب، شكل المركب، الوقت ليل ولا نهار)، وممكن النتيجة متطلعش زي ما أنت متخيل.</p>
+                <div class="bg-gray-50 dark:bg-[#070e0c] p-4 rounded-xl border-2 border-gray-200 dark:border-brand-teal/30 border-l-4 border-l-brand-teal my-4 shadow-sm">
+                    <p class="font-bold text-brand-dark dark:text-white mb-2"><i class="fa-solid fa-lightbulb text-brand-teal"></i> نصيحة دكتور محمود (الفويس أوفر):</p>
+                    <p class="text-sm m-0 leading-relaxed text-gray-700 dark:text-gray-200">لو هتعمل فويس أوفر (صوت)، لازم تظبط مدة الكلام مع مدة الفيديو. لو اديته سكريبت طويل، الفيديو هيقطع والكلام لسه مخلصش! ولو اديته كلام قليل جداً، هتلاقي الشخصية بتعمل حركات غريبة ببقها في آخر الفيديو لأن الكلام خلص!</p>
+                </div>
+
+                <h4 class="font-bold text-brand-teal dark:text-brand-green mt-6">💰 نظام الكريديتس ومفاجأة الـ Google Ultra 🎁</h4>
+                <p>موقع Flow بيديك 150 كريديت مجاني أول مرة، وكل يوم بيجددلك 50 كريديت. النماذج اللي جوه بتسحب الرصيد كالتالي:</p>
+                
+                <!-- جدول استهلاك الكريديتس -->
+                <div class="overflow-x-auto my-6">
+                    <table class="w-full text-sm text-right bg-white dark:bg-[#0a1412] rounded-xl overflow-hidden shadow-sm border border-gray-200 dark:border-brand-teal/30 min-w-[600px]">
+                        <thead class="bg-brand-teal/10 dark:bg-brand-teal/20 text-brand-dark dark:text-brand-green">
+                            <tr>
+                                <th class="p-3 border-b border-gray-200 dark:border-brand-teal/30">اسم النموذج</th>
+                                <th class="p-3 border-b border-gray-200 dark:border-brand-teal/30">بيسحب كام كريديت؟</th>
+                                <th class="p-3 border-b border-gray-200 dark:border-brand-teal/30">جودة الفيديو والنتيجة</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-gray-700 dark:text-gray-200">
+                            <tr class="border-b border-gray-100 dark:border-gray-800">
+                                <td class="p-3 font-bold text-brand-teal">Veo 3 Lite</td>
+                                <td class="p-3">5 كريديت</td>
+                                <td class="p-3">فيديو 8 ثواني جودته متوسطة. (ممتاز للتجارب السريعة).</td>
+                            </tr>
+                            <tr class="border-b border-gray-100 dark:border-gray-800">
+                                <td class="p-3 font-bold text-brand-teal">Veo 3 Fast</td>
+                                <td class="p-3">10 كريديت</td>
+                                <td class="p-3"><strong>(الأنسب والأساسي!)</strong> نتايجه ممتازة وبيلتزم بالبرومبت جداً.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-bold text-brand-teal">Veo 3 Quality</td>
+                                <td class="p-3">100 كريديت!</td>
+                                <td class="p-3">جودة خرافية بس غالي جداً! الفرق بينه وبين الـ Fast مش بيستاهل تضيع رصيدك عليه في البدايات.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="bg-gradient-to-r from-brand-teal/10 to-brand-green/10 dark:from-brand-teal/20 dark:to-brand-green/20 p-5 rounded-2xl border border-brand-green/40 mt-6 shadow-sm">
+                    <h4 class="font-bold text-brand-dark dark:text-white mb-2 flex items-center gap-2">
+                        <i class="fa-solid fa-gift text-brand-green"></i> الهدية الكبرى للطلبة الملتزمين
+                    </h4>
+                    <p class="text-sm text-gray-700 dark:text-gray-200 mb-2 leading-relaxed">دكتور محمود عارف إن الرصيد المجاني ممكن ميقضيش طموحك، عشان كده خصص <strong>4 أكونتات (Google Ultra)</strong> للملتزمين اللي بيطبقوا التاسكات! الأكونت الألترا فيه <strong>25,000 كريديت</strong> (يعني تعمل حوالي 2500 فيديو براحتك).</p>
+                    <p class="text-xs text-brand-teal dark:text-brand-green font-bold">لو أنت سمعت المحاضرة وجاهز تطبق، ابعت لدكتور محمود على الواتساب كلمة "جوجل ألترا" وهيبعتلك الإيميل والباسورد تعيش بيهم. (أمانة: اعمل New Project باسمك عشان المشاريع متدخلش في بعض).</p>
+                </div>
+
+                <p class="mt-8 font-bold text-brand-teal dark:text-brand-green text-center italic">"كده إحنا حطينا رجلينا على أول طريق الفيديوهات. ركز معايا عشان إحنا بنعلى بالليفل، واللي جاي ده مش مجرد توليد فيديوهات، ده "إخراج سينمائي" بجد هيخليك تتحكم في كل تفصيلة في المشهد! 🎬🚀"</p>
+
+                <h3 class="text-xl font-bold text-brand-dark dark:text-white mt-10 mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-clapperboard text-brand-green text-sm"></i> الباب الخامس: أسرار الإخراج البصري والـ (Storyboarding) 🎥🗺️
+                </h3>
+                <p>أستاذة أبرار اقترحت فكرة قصة إنسانية عن بنت بتتعرض للتنمر. الفكرة ممتازة، بس هنا دكتور محمود لفت انتباهنا لمشكلة كارثية في الـ AI: لو اعتمدت على "النص" بس، إيه اللي يضمنلك إن البنت في المشهد الأول هتطلع هي هي نفس البنت في المشهد التاني؟ الـ AI لو سبته لخياله، كل 5 ثواني هيطلعلك شخصية شكل!</p>
+
+                <h4 class="font-bold text-brand-teal dark:text-brand-green mt-6">🗺️ الحل السحري: بناء القصة المصورة (Storyboarding)</h4>
+                <p>عشان نضمن <strong>"ثبات الشخصية" (Character Consistency)</strong>، لازم نبدأ بتوليد "صور" للشخصية بتاعتنا في الأول، وبعدين نحرك الصور دي.</p>
+                <div class="bg-white dark:bg-[#0a1412] p-5 rounded-2xl border-2 border-gray-100 dark:border-gray-800 shadow-sm mt-4">
+                    <ul class="list-decimal list-inside space-y-3 text-sm text-gray-700 dark:text-gray-200">
+                        <li>بنعمل أول صورة للشخصية بالوصف اللي إحنا عايزينه.</li>
+                        <li>بنرفع الصورة دي للمساعد كـ "مرجع" (Reference) ونقوله: "استخدم الصورة دي كمرجع في باقي مشاهد نفس الشخصية عشان تطلعهالي في مكان تاني أو وضعية تانية".</li>
+                        <li><strong>تريكة تنظيمية:</strong> أي صورة تعجبك اعملها (Favorite ❤️) عشان ماتتوهش، ولما تحملها سميها بأسماء المشاهد (Scene 1, 2) عشان ترتب أفكارك.</li>
+                    </ul>
+                </div>
+
+                <h4 class="font-bold text-brand-teal dark:text-brand-green mt-6">🤖 دور المساعد الشخصي (Video Mood)</h4>
+                <p>بعد ما جهزنا صور المشاهد، بنروح للمساعد الخاص بالفيديوهات ونقوله: <em>"أنا محتاج أوامر تحريك للمشاهد دي، وعايز فويس أوفر بالعامية المصرية"</em>. دكتور محمود وفرلنا مساعد مخصوص للمهمة دي بيطلعلك أوامر احترافية جاهزة للتحريك.</p>
+
+                <h4 class="font-bold text-brand-teal dark:text-brand-green mt-6">⚖️ ليه Flow بيكسب Gemini في الفيديوهات؟</h4>
+                <p>لو أنت على النسخة المدفوعة في جيميناي، ليك 3 فيديوهات في اليوم، بس نصيحة دكتور محمود: <strong>بلاش تستخدم جيميناي في الفيديوهات لأنه عبثي جداً وبيفترض حاجات من دماغه!</strong> روح دايماً لموقع Flow؛ واجهته أسهل. بتشد الصورة الأولى (First Frame)، وتشهد التانية كـ (End Frame)، وتكتب برومبت بسيط جداً يوصل بينهم، مثلاً: "وصل بين المشهدين وارسم قصة بنت بتتعرض للتنمر".</p>
+
+                <h4 class="font-bold text-brand-teal dark:text-brand-green mt-6">🎥 زوايا الكاميرا (Camera Angles): السر في كسر الملل!</h4>
+                <p>أوعى تعمل فيديو دقيقة كاملة بكادر واحد ثابت، عين المشاهد هتمل وهيسحب الشاشة فوراً! لازم تنوع في اللقطات وتكتب زاوية التصوير في البرومبت.</p>
+                
+                <!-- جدول زوايا الكاميرا -->
+                <div class="overflow-x-auto my-6">
+                    <table class="w-full text-sm text-right bg-white dark:bg-[#0a1412] rounded-xl overflow-hidden shadow-sm border border-gray-200 dark:border-brand-teal/30 min-w-[600px]">
+                        <thead class="bg-brand-teal/10 dark:bg-brand-teal/20 text-brand-dark dark:text-brand-green">
+                            <tr>
+                                <th class="p-3 border-b border-gray-200 dark:border-brand-teal/30">زاوية الكاميرا (Angle/Shot)</th>
+                                <th class="p-3 border-b border-gray-200 dark:border-brand-teal/30">بتعمل إيه في المشهد؟</th>
+                                <th class="p-3 border-b border-gray-200 dark:border-brand-teal/30">إمتى نستخدمها؟</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-gray-700 dark:text-gray-200">
+                            <tr class="border-b border-gray-100 dark:border-gray-800">
+                                <td class="p-3 font-bold text-brand-teal">Medium shot (لقطة متوسطة)</td>
+                                <td class="p-3">بتجيب نص الجسم الفوقاني للشخصية.</td>
+                                <td class="p-3">لقطات الحوار العادية وتوضيح لغة الجسد.</td>
+                            </tr>
+                            <tr class="border-b border-gray-100 dark:border-gray-800">
+                                <td class="p-3 font-bold text-brand-teal">High angle (زاوية علوية)</td>
+                                <td class="p-3">الكاميرا بتصور الشخص من فوق لتحت.</td>
+                                <td class="p-3">بتبين الشخصية ضعيفة أو مكسورة (زي البنت المتنمر عليها).</td>
+                            </tr>
+                            <tr class="border-b border-gray-100 dark:border-gray-800">
+                                <td class="p-3 font-bold text-brand-teal">Low angle (زاوية سفلية)</td>
+                                <td class="p-3">الكاميرا بتصور الشخص من تحت لفوق.</td>
+                                <td class="p-3">بتبين الشخصية قوية ومسيطرة (زي المتنمرين).</td>
+                            </tr>
+                            <tr class="border-b border-gray-100 dark:border-gray-800">
+                                <td class="p-3 font-bold text-brand-teal">Wide view (لقطة واسعة)</td>
+                                <td class="p-3">بتكشف المكان كله (الفصل كله مثلاً).</td>
+                                <td class="p-3">لتأسيس المكان وتوضيح المشهد العام.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-bold text-brand-teal">Close-up (لقطة مقربة)</td>
+                                <td class="p-3">زووم على وش الشخصية.</td>
+                                <td class="p-3">لإبراز المشاعر القوية (زي تأثر البنت والدموع بتنزل).</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>بعد ما بتطلع لقطاتك، بتاخدهم على برنامج مونتاج زي <strong>CapCut</strong> أو تطبيق <strong>VN</strong> على الموبايل، وتدمجهم ورا بعض مع المزيكا، عشان تطلع بـ 30 ثانية احترافية.</p>
+
+                <h4 class="font-bold text-brand-teal dark:text-brand-green mt-6">🏙️ إزاي تحافظ على نفس المكان في الفيديو؟</h4>
+                <p>الموضوع كله لعبة صور! لو حطيت الـ First Frame والـ Last Frame لنفس المكان، النموذج ملوش حل غير إنه يحرك العناصر جوه الإطار ده بس. بس خلي بالك من التفاصيل الدقيقة.. في فيديو البنت المتنمر عليها، الولاد في أول الفيديو كانوا ماسكين كتب "جديدة"، ولما رموها على الأرض ظهرت ككتب "قديمة". التناسق بين الصورتين هو اللي بيحكم جودة الفيديو.</p>
+
+                <h3 class="text-xl font-bold text-brand-dark dark:text-white mt-10 mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-puzzle-piece text-brand-green text-sm"></i> الباب السادس: تريكات متقدمة ولعبة الـ (First & Last Frame) 🧩✨
+                </h3>
+                <p>بما إننا فهمنا قوة الإطار الأول والأخير، تعالوا نشوف إزاي دكتور محمود وظف التكنيك ده عشان يعمل أفكار مجنونة:</p>
+                
+                <div class="grid md:grid-cols-2 gap-5 mt-4">
+                    <!-- 1 -->
+                    <div class="bg-gray-50 dark:bg-[#070e0c] p-5 rounded-2xl border-2 border-gray-200 dark:border-brand-teal/30 hover:shadow-md transition-all flex flex-col">
+                        <h4 class="font-bold text-brand-teal dark:text-brand-green mb-2"><i class="fa-solid fa-desktop"></i> 1. أنيميشن لبريزنتيشن NotebookLM</h4>
+                        <p class="text-sm text-gray-700 dark:text-gray-200 leading-relaxed mb-2">إزاي نحرك صور السلايدز؟ بناخد صورة السلايد المليانة داتا، ونشيل كل الكلام بأي أداة ونسيب "الخلفية فاضية".</p>
+                        <p class="text-xs bg-white dark:bg-brand-darkcard p-2 rounded border border-gray-200 dark:border-gray-800">نحط الصورة الفاضية كـ (First Frame)، والصورة المليانة كـ (Last Frame). النموذج هيعمل ترانزيشن حركة ناعمة جداً من غير ما تضيع ولا حرف!</p>
+                    </div>
+                    <!-- 2 -->
+                    <div class="bg-gray-50 dark:bg-[#070e0c] p-5 rounded-2xl border-2 border-gray-200 dark:border-brand-teal/30 hover:shadow-md transition-all flex flex-col">
+                        <h4 class="font-bold text-brand-teal dark:text-brand-green mb-2"><i class="fa-solid fa-camera-retro"></i> 2. تريند سيلفي المشاهير</h4>
+                        <p class="text-sm text-gray-700 dark:text-gray-200 leading-relaxed mb-2">صورتك إنت بتكون الـ (First Frame)، وصورة النجم أو الشخصية الـ (Last Frame).</p>
+                        <p class="text-xs bg-white dark:bg-brand-darkcard p-2 rounded border border-gray-200 dark:border-gray-800">تكتب في البرومبت: "أتصور سيلفي مع الشخصية الأولى وأنتقل للتانية". الـ AI هيعمل لفة كاميرا مبهرة بين الشخصين!</p>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 dark:bg-[#070e0c] p-5 rounded-2xl border-2 border-red-200 dark:border-red-900 border-l-4 border-l-red-500 mt-6 shadow-sm">
+                    <h4 class="font-bold text-red-600 dark:text-red-500 mb-2"><i class="fa-solid fa-shield-halved"></i> حل عبقري للهروب من قيود النماذج (Our Policy)</h4>
+                    <p class="text-sm text-gray-800 dark:text-gray-200 leading-relaxed mb-2">أحياناً بتيجي تدمج شخصيات سياسية أو مشاهير، موقع Flow بيرفض ويطلعلك رسالة (Our Policy). نقف؟ مستحيل! التريكة:</p>
+                    <ul class="text-sm list-disc list-inside space-y-1 text-gray-800 dark:text-gray-200">
+                        <li>بنروح لنموذج الصور ChatGPT Images، نرفعله الصور ونطلب منه يدمجهم في صورة واحدة (بيكون متساهل شوية).</li>
+                        <li>ناخد الصور ونروح لمواقع مفتوحة زي <strong>Higgsfield</strong> أو <strong>LM Arena</strong>.</li>
+                        <li>نرفع الصور ونكتب برومبت بسيط: "حرك من دي لدي". المواقع دي بتعمل الحركة بمرونة من غير ما تقفش في سياسات المشاهير!</li>
+                    </ul>
+                </div>
+
+                <p class="mt-8 font-bold text-brand-teal dark:text-brand-green text-center italic">"كده إحنا دخلنا في عمق صناعة المشهد وفهمنا اللعبة ماشية إزاي. البابين اللي جايين فيهم "الخلاصة" اللي هتميزك عن أي حد بيستخدم الذكاء الاصطناعي بشكل سطحي. هندخل في تفاصيل الصوت، النطق، وإزاي تسرق أفكار الإعلانات العبقرية بـ "شياكة"! 🚀"</p>
+
+                <h3 class="text-xl font-bold text-brand-dark dark:text-white mt-10 mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-microphone-lines text-brand-green text-sm"></i> الباب السابع: السحر الصوتي والهندسة العكسية 🎙️🔍
+                </h3>
+                <p>الفيديو من غير صوت أو قصة متماسكة بيبقى ناقص روح. تعالوا نشوف إزاي دكتور محمود كمل اللوحة الفنية دي.</p>
+                
+                <h4 class="font-bold text-brand-teal dark:text-brand-green mt-6">🧩 دمج المشاهد (Storytelling)</h4>
+                <p>السر في "التسلسل". جرب تاخد الـ (Last Frame) من المشهد الأول، وتستخدمه كـ (First Frame) في المشهد التاني! الحركة دي بتخلق ترابط بصري رهيب.</p>
+
+                <h4 class="font-bold text-brand-teal dark:text-brand-green mt-6">🗣️ تزامن الشفاه (Lip-sync) وتحديات النطق</h4>
+                <p>في موقع Flow، نموذج Veo 3 بيدعم إن الشخصية تتكلم عربي. بس في تريكتين مهمين وقت التنفيذ:</p>
+                <ul class="list-disc list-inside space-y-2 mb-4 text-sm text-gray-700 dark:text-gray-200">
+                    <li><strong>فخ الوقت (الـ 8 ثواني):</strong> لو كتبت سكريبت طويل، الفيديو هيخلص وتلاقي الشخصية قطعت الكلام في النص! لازم توازن كمية الكلام مع وقت الفيديو.</li>
+                    <li><strong>علاج عيوب النطق:</strong> الـ AI أحياناً بيلدغ أو بينطق غلط. الحل: <strong>التشكيل</strong> (حط فتحة وكسرة)، و<strong>الكتابة الصوتية</strong> (إحنا مش بنكتب الكلام زي ما بيتقرأ لغوياً، إحنا بنكتبه "زي ما بيتنطق". لو القاف بتتنطق همزة في العامية، اكتبها همزة في السكريبت!).</li>
+                </ul>
+
+                <h4 class="font-bold text-brand-teal dark:text-brand-green mt-6">💡 كنز مجاني (Meta & Midjourney)</h4>
+                <p>تريكة موقع Meta (فيسبوك): ميتا عاملة تعاقد صايع جداً مع نموذج الصور الجبار <strong>Midjourney</strong>. تقدر تدخل أكونت الفيسبوك بتاعك، وتعمل صور مجانية بلا حدود (Unlimited)! نتايجه كصور خرافية ومجانية.</p>
+
+                <h4 class="font-bold text-brand-teal dark:text-brand-green mt-6">🕵️‍♂️ الهندسة العكسية للفيديوهات</h4>
+                <p>عجبك إعلان لمنافس وعايز تعرف اتعمل إزاي؟ Gemini بيقبل ترفعلة فيديوهات لحد 5 دقايق وتحللها! ارفعله الفيديو وقوله: <em>"إديني برومبت أعمل نفس الستايل ده"</em>. هيحلل زوايا الكاميرا ويديك البرومبت اللي تطلع بيه نفس النتيجة.</p>
+
+                <h4 class="font-bold text-brand-teal dark:text-brand-green mt-6">🌀 تحريك اللوجوهات بذكاء (Logo Animation)</h4>
+                <p>افصل خلفية اللوجو وخليه (First Frame). دور في Pinterest على (Logo Animation) وحمل فيديو يعجبك. ارفع الفيديو ده لـ Gemini مع اللوجو بتاعك وقوله: <em>"اعملي Customize للأنيميشن ده على اللوجو بتاعي"</em>. هياخد الحركة ويترجمها لبرومبت دقيق جداً!</p>
+
+            </div>
+        </section>
+
+        <!-- 2. تحدي الأسبوع (Weekly Challenge) -->
+        <section id="challenge-zone" class="scroll-mt-24 bg-white dark:bg-brand-darkcard border-2 border-brand-green/50 dark:border-brand-green/60 rounded-3xl p-6 md:p-8 shadow-md">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="p-3 bg-brand-green/10 dark:bg-brand-green/20 text-brand-green rounded-lg border border-brand-green/30">
+                    <i class="fa-solid fa-trophy text-xl"></i>
+                </div>
+                <h2 class="text-2xl font-bold border-b-2 border-brand-teal pb-2 inline-block dark:text-white">🚀 الباب الثامن: مسك الختام والتطبيق العملي</h2>
+            </div>
+            
+            <p class="mb-6 text-gray-700 dark:text-gray-200 font-semibold text-lg leading-relaxed">
+                "مربط الفرس إنك بتتعلم مهارات تخدم على اللي بتعمله أو تحسن اللي بتعمله. الدبلومة دي معمولة عشان تكون سبب في تخفيف الضغط وتوفير الوقت، مش زيادة العبء." 💚
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Task 1 -->
+                <div class="bg-gray-50 dark:bg-[#070e0c] border-2 border-gray-200 dark:border-brand-teal/30 border-t-4 border-t-brand-teal rounded-2xl p-5 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all flex flex-col">
+                    <h3 class="font-bold text-lg text-brand-teal dark:text-brand-green mb-3 flex items-center gap-2 border-b border-gray-200 dark:border-brand-teal/30 pb-2">
+                        <i class="fa-solid fa-film"></i> 1. مشروعك الخاص
+                    </h3>
+                    <p class="text-sm text-gray-700 dark:text-gray-200 leading-relaxed">
+                        حاول تعمل فيديو قصير (من صورتين First & Last Frame) لمنتجك أو لخدمتك. جرب تعمل زي دكتور محمود (كانز مكتوب عليها Smarter With AI وحواليها تلج).
+                    </p>
+                </div>
+
+                <!-- Task 2 -->
+                <div class="bg-gray-50 dark:bg-[#070e0c] border-2 border-gray-200 dark:border-brand-teal/30 border-t-4 border-t-brand-teal rounded-2xl p-5 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all flex flex-col">
+                    <h3 class="font-bold text-lg text-brand-teal dark:text-brand-green mb-3 flex items-center gap-2 border-b border-gray-200 dark:border-brand-teal/30 pb-2">
+                        <i class="fa-solid fa-robot"></i> 2. استخدام المساعدين
+                    </h3>
+                    <p class="text-sm text-gray-700 dark:text-gray-200 leading-relaxed">
+                        افتح المساعد الشخصي Video Mood (Gemini)، اطلب منه سيناريو وبرومبتات لفيديو من 3 مشاهد لمنتجك، وروح طبقها على موقع Flow.
+                    </p>
+                </div>
+
+                <!-- Task 3 -->
+                <div class="bg-gray-50 dark:bg-[#070e0c] border-2 border-gray-200 dark:border-brand-teal/30 border-t-4 border-t-brand-teal rounded-2xl p-5 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all flex flex-col">
+                    <h3 class="font-bold text-lg text-brand-teal dark:text-brand-green mb-3 flex items-center gap-2 border-b border-gray-200 dark:border-brand-teal/30 pb-2">
+                        <i class="fa-solid fa-lips-retracting"></i> 3. التجربة الصوتية
+                    </h3>
+                    <p class="text-sm text-gray-700 dark:text-gray-200 leading-relaxed">
+                        جرب تعمل فيديو بـ Lip-sync تخلي الشخصية تتكلم، واستخدم تريكة "الكتابة الصوتية والتشكيل" عشان تظبط نطق الكلمات العامية.
+                    </p>
+                </div>
+            </div>
+            
+        </section>
+
+        <!-- 3. صندوق الأدوات والمساعدين (Tools Zone) -->
+        <section id="tools-zone" class="scroll-mt-24 bg-white dark:bg-brand-darkcard border-2 border-gray-200 dark:border-brand-teal/60 rounded-3xl p-6 md:p-8 shadow-md relative overflow-hidden">
+            <div class="relative z-10">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="p-3 bg-brand-teal/10 dark:bg-brand-teal/20 text-brand-teal dark:text-brand-green rounded-lg border border-brand-teal/30">
+                        <i class="fa-solid fa-toolbox text-xl"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold border-b-2 border-brand-teal pb-2 inline-block dark:text-white">ترسانة الأدوات والمراجع السريعة</h2>
+                </div>
+
+                <!-- الأدوات والمنصات الأساسية -->
+                <div class="bg-gray-50 dark:bg-[#070e0c] rounded-2xl p-6 border-2 border-gray-200 dark:border-brand-teal/40 shadow-sm mb-8">
+                    <h3 class="font-bold text-lg text-brand-dark dark:text-white mb-4 border-b border-brand-teal/30 pb-2 flex items-center gap-2">
+                        <i class="fa-solid fa-laptop-code text-brand-teal"></i> قائمة الأدوات (Bookmarks)
+                    </h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <a href="https://labs.google/fx/tools/flow" target="_blank" class="bg-white dark:bg-brand-darkcard border border-gray-200 dark:border-brand-teal/30 hover:border-brand-teal dark:hover:border-brand-green hover:shadow-md rounded-xl p-3 text-center transition flex flex-col items-center gap-2 group justify-center">
+                            <i class="fa-solid fa-wand-magic-sparkles text-2xl text-yellow-500 group-hover:scale-110 transition-transform"></i>
+                            <span class="font-semibold text-xs text-brand-dark dark:text-gray-200">Flow من Google</span>
+                            <span class="text-[10px] text-gray-500 mt-1">الوحش الأساسي للفيديوهات</span>
+                        </a>
+                        
+                        <a href="https://gemini.google.com" target="_blank" class="bg-white dark:bg-brand-darkcard border border-gray-200 dark:border-brand-teal/30 hover:border-brand-teal dark:hover:border-brand-green hover:shadow-md rounded-xl p-3 text-center transition flex flex-col items-center gap-2 group justify-center">
+                            <i class="fa-brands fa-google text-2xl text-[#4285f4] group-hover:scale-110 transition-transform"></i>
+                            <span class="font-semibold text-xs text-brand-dark dark:text-gray-200">Gemini</span>
+                            <span class="text-[10px] text-gray-500 mt-1">لتحليل الفيديوهات (هندسة عكسية)</span>
+                        </a>
+
+                        <a href="https://chatgpt.com/" target="_blank" class="bg-white dark:bg-brand-darkcard border border-gray-200 dark:border-brand-teal/30 hover:border-brand-teal dark:hover:border-brand-green hover:shadow-md rounded-xl p-3 text-center transition flex flex-col items-center gap-2 group justify-center">
+                            <i class="fa-solid fa-robot text-2xl text-[#10a37f] group-hover:scale-110 transition-transform"></i>
+                            <span class="font-semibold text-xs text-brand-dark dark:text-gray-200">ChatGPT</span>
+                            <span class="text-[10px] text-gray-500 mt-1">للكاروسيل وتخطي السياسات</span>
+                        </a>
+
+                        <a href="https://higgsfield.ai/" target="_blank" class="bg-white dark:bg-brand-darkcard border border-gray-200 dark:border-brand-teal/30 hover:border-brand-teal dark:hover:border-brand-green hover:shadow-md rounded-xl p-3 text-center transition flex flex-col items-center gap-2 group justify-center">
+                            <i class="fa-solid fa-globe text-2xl text-purple-500 group-hover:scale-110 transition-transform"></i>
+                            <span class="font-semibold text-xs text-brand-dark dark:text-gray-200">Higgsfield / LM Arena</span>
+                            <span class="text-[10px] text-gray-500 mt-1">مواقع مفتوحة للتحريك المفتوح</span>
+                        </a>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                        <div class="bg-brand-teal/10 dark:bg-brand-teal/20 p-4 rounded-xl border border-brand-teal/30 text-sm flex items-center gap-3">
+                            <i class="fa-solid fa-scissors text-brand-teal text-xl"></i>
+                            <div>
+                                <strong class="block text-brand-dark dark:text-white">برامج المونتاج الموصى بها:</strong>
+                                <span class="text-gray-700 dark:text-gray-200">استخدم برنامج <strong>CapCut</strong> (للكمبيوتر أو الموبايل) أو تطبيق <strong>VN</strong> (للموبايل) لدمج اللقطات.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- كتيبة المساعدين -->
+                <div class="bg-gradient-to-l from-gray-50 to-white dark:from-[#070e0c] dark:to-[#0a1412] rounded-2xl p-6 border-2 border-gray-200 dark:border-brand-teal/40 shadow-sm relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-1.5 h-full bg-gradient-to-b from-brand-teal to-brand-green"></div>
+                        <h3 class="font-bold text-xl text-brand-dark dark:text-white mb-3 border-b border-brand-teal/30 pb-2 flex items-center gap-2">
+                            <i class="fa-solid fa-users-gear text-brand-teal dark:text-brand-green"></i> المساعد الشخصي (Video Mood)
+                        </h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-300 mb-6 font-semibold">مساعد متخصص عشان يطلعلك أوامر احترافية جاهزة للتحريك والـ Storyboarding:</p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-2xl mx-auto">
+                            <!-- Video Mood -->
+                            <div class="bg-white dark:bg-brand-darkcard border-2 border-gray-200 dark:border-brand-teal/30 rounded-xl p-5 transition flex flex-col h-full hover:shadow-md hover:-translate-y-1 hover:border-brand-teal dark:hover:border-brand-green">
+                                <h4 class="font-bold text-brand-teal dark:text-brand-green mb-1 text-sm flex items-center gap-2"><i class="fa-solid fa-video"></i> Video Mood</h4>
+                                <p class="text-[11px] text-gray-500 mb-3">(مخرجك السينمائي)</p>
+                                <p class="text-xs text-gray-700 dark:text-gray-200 mb-5 flex-1 leading-relaxed">أنا محتاج أوامر تحريك للمشاهد دي، وعايز فويس أوفر بالعامية المصرية. المساعد هيظبطلك الدنيا كلها.</p>
+                                <div class="grid grid-cols-2 gap-2 mt-auto">
+                                    <a href="https://chatgpt.com/g/g-68f6cc30b078819197b1375a44e8ca83-video-mood" target="_blank" class="bg-[#10a37f] text-white font-bold py-2.5 rounded-lg hover:bg-[#0e906f] transition shadow-sm text-xs text-center flex items-center justify-center gap-2">
+                                        <i class="fa-solid fa-robot"></i> ChatGPT
+                                    </a>
+                                    <a href="https://gemini.google.com/gem/ac08e2d00ff7" target="_blank" class="bg-[#4285f4] text-white font-bold py-2.5 rounded-lg hover:bg-[#3367d6] transition shadow-sm text-xs text-center flex items-center justify-center gap-2">
+                                        <i class="fa-brands fa-google"></i> Gemini
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 5. الروابط والمجتمع (Community) -->
+    <footer class="bg-white dark:bg-[#050a09] border-t-2 border-gray-200 dark:border-brand-teal/50 mt-12 py-12 shadow-inner">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            
+            <!-- 1. أدوات الدبلومة -->
+            <div class="flex flex-col h-full">
+                <h4 class="font-bold text-brand-dark dark:text-brand-green mb-4 text-lg border-r-4 border-brand-teal pr-2 text-right shrink-0">أدوات الدبلومة 🔗</h4>
+                <div class="bg-gray-50 dark:bg-brand-darkcard rounded-xl p-5 border border-gray-300 dark:border-brand-teal/50 flex-1 text-right flex flex-col justify-start">
+                    <ul class="space-y-4">
+                        <li>
+                            <a href="https://notebooklm.google.com/notebook/7b7f75b1-77f6-4363-ada6-84c730d6bfc7" target="_blank" class="flex items-center justify-start gap-2 text-sm text-brand-teal hover:text-brand-green dark:text-gray-300 dark:hover:text-brand-green transition font-semibold w-full">
+                                <i class="fa-solid fa-book-open-reader text-lg w-5 text-center text-brand-teal dark:text-brand-green shrink-0"></i> 
+                                <span class="flex-1 text-right">نوت بوك الدبلومة</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://mahmoudtaru.github.io/Smarter-With-Ai-Round-4/" target="_blank" class="flex items-center justify-start gap-2 text-sm text-brand-teal hover:text-brand-green dark:text-gray-300 dark:hover:text-brand-green transition font-semibold w-full">
+                                <i class="fa-solid fa-laptop-code text-lg w-5 text-center text-brand-teal dark:text-brand-green shrink-0"></i> 
+                                <span class="flex-1 text-right">تطبيق الدبلومة الأساسي</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://mahmoudtaru.github.io/Smarter-With-Ai-course/" target="_blank" class="flex items-center justify-start gap-2 text-sm text-brand-teal hover:text-brand-green dark:text-gray-300 dark:hover:text-brand-green transition font-semibold w-full">
+                                <i class="fa-solid fa-globe text-lg w-5 text-center text-brand-teal dark:text-brand-green shrink-0"></i> 
+                                <span class="flex-1 text-right">موقع الدبلومة الشامل</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 2. مسارات ومساعدين -->
+            <div class="flex flex-col h-full">
+                <h4 class="font-bold text-brand-dark dark:text-brand-green mb-4 text-lg border-r-4 border-yellow-500 pr-2 text-right shrink-0">مسارات ومساعدين 🎁</h4>
+                <div class="bg-gray-50 dark:bg-brand-darkcard rounded-xl p-5 border border-gray-300 dark:border-brand-teal/50 flex-1 text-right flex flex-col justify-start">
+                    <p class="text-xs text-gray-500 dark:text-gray-400 mb-4 font-semibold leading-relaxed">للوصول السريع لكل المسارات المحدثة 💚</p>
+                    <ul class="space-y-4">
+                        <li>
+                            <a href="#" target="_blank" class="flex items-center justify-start gap-2 text-sm text-brand-teal hover:text-brand-green dark:text-gray-300 dark:hover:text-brand-green transition font-semibold w-full">
+                                <i class="fa-solid fa-route text-lg w-5 text-center text-brand-teal dark:text-brand-green shrink-0"></i> 
+                                <span class="flex-1 text-right">منصة المسارات (Workflows)</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://youtube.com/@smarterwithai18?si=aMFzVqyd1bK0QRSV" target="_blank" class="flex items-center justify-start gap-2 text-sm text-brand-teal hover:text-brand-green dark:text-gray-300 dark:hover:text-brand-green transition font-semibold w-full">
+                                <i class="fa-brands fa-youtube text-lg w-5 text-center text-red-500 shrink-0"></i> 
+                                <span class="flex-1 text-right">قناة اليوتيوب الرسمية</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 3. المجتمع والدعم -->
+            <div class="flex flex-col h-full">
+                <h4 class="font-bold text-brand-dark dark:text-brand-green mb-4 text-lg border-r-4 border-brand-teal pr-2 text-right shrink-0">المجتمع والدعم 🤝</h4>
+                <div class="bg-gray-50 dark:bg-brand-darkcard rounded-xl p-5 border border-gray-300 dark:border-brand-teal/50 flex-1 text-right flex flex-col justify-start">
+                    <ul class="space-y-4">
+                        <li>
+                            <a href="https://www.facebook.com/groups/1106148034264004" target="_blank" class="flex items-center justify-start gap-2 text-sm text-brand-teal hover:text-brand-green dark:text-gray-300 dark:hover:text-brand-green transition font-semibold w-full">
+                                <i class="fa-brands fa-facebook text-lg w-5 text-center text-blue-600 shrink-0"></i> 
+                                <span class="flex-1 text-right">جروب الفيسبوك العام</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://t.me/Smarter_With_Ai" target="_blank" class="flex items-center justify-start gap-2 text-sm text-brand-teal hover:text-brand-green dark:text-gray-300 dark:hover:text-brand-green transition font-semibold w-full">
+                                <i class="fa-brands fa-telegram text-lg w-5 text-center text-blue-500 shrink-0"></i> 
+                                <span class="flex-1 text-right">قناة التليجرام العامة</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://t.me/c/3331953900/4" target="_blank" class="flex items-center justify-start gap-2 text-sm text-brand-teal hover:text-brand-green dark:text-gray-300 dark:hover:text-brand-green transition font-semibold w-full">
+                                <i class="fa-solid fa-list-check text-lg w-5 text-center text-brand-green shrink-0"></i> 
+                                <span class="flex-1 text-right">قناة التاسكات (للدفعة)</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://chat.whatsapp.com/C68FsQh5eYM7দ্দaKAXCk9vQ" target="_blank" class="flex items-center justify-start gap-2 text-sm text-brand-teal hover:text-brand-green dark:text-gray-300 dark:hover:text-brand-green transition font-semibold w-full">
+                                <i class="fa-brands fa-whatsapp text-lg w-5 text-center text-green-500 shrink-0"></i> 
+                                <span class="flex-1 text-right">جروب الواتساب (للدفعة)</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://t.me/c/3331953900/1" target="_blank" class="flex items-center justify-start gap-2 text-sm text-brand-teal hover:text-brand-green dark:text-gray-300 dark:hover:text-brand-green transition font-semibold w-full">
+                                <i class="fa-solid fa-comments text-lg w-5 text-center text-blue-400 shrink-0"></i> 
+                                <span class="flex-1 text-right">جروب المناقشات (للدفعة)</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 4. العلامة التجارية -->
+            <div class="flex flex-col items-center justify-center text-center h-full">
+                <img src="https://i.postimg.cc/j512mZ0r/lwjw-image-hosting.jpg" alt="Smarter With AI Logo" class="w-20 h-20 rounded-2xl object-contain shadow-md mb-4 bg-white border-2 border-brand-teal/30 dark:border-brand-teal">
+                <div class="font-extrabold text-2xl text-brand-dark dark:text-white">Smarter With <span class="text-brand-green">AI</span></div>
+                <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">نصنع الفارق بالذكاء الاصطناعي</p>
+            </div>
+        </div>
+        
+        <div class="text-center text-sm text-gray-400 dark:text-gray-500 mt-12 border-t border-gray-200 dark:border-brand-teal/30 pt-6 pb-24 md:pb-6">
+            جميع الحقوق محفوظة &copy; 2026 لـ Smarter With AI
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // --- 1. Dark/Light Mode Toggle ---
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+
+        themeToggleBtn.addEventListener('click', function() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('color-theme', 'light');
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('color-theme', 'dark');
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+            }
+        });
+    </script>
+</body>
+</html>
